@@ -27,6 +27,23 @@
 	text-shadow: none !important;
 }
 
+/* 省略表示用のクラス */
+.truncate-text {
+	/* 幅は指定しない（親のtd幅に従う） */
+	max-width: 550px;
+
+	display: block;
+	/* 幅制限を効かせるため */
+	white-space: nowrap;
+	/* 改行させない */
+	overflow: hidden;
+	/* はみ出し隠す */
+	text-overflow: ellipsis;
+	/* 「...」にする */
+	background-color: transparent;
+}
+
+
 /* =========================================
    2. スマホ向けの強力な補正 (画面幅900px以下)
    ========================================= */
@@ -83,32 +100,10 @@
 		max-width: 150px;
 		/* スマホでは150pxを超えたら省略 */
 	}
+	
+	.table {
+		min-width: 500px;
+		/* 画面が狭くても表は縮まない */
+	}
 
 }
-
-/* 修正前：120pxなどで固定していた */
-/* 修正後：以下のように書き換えてください */
-
-/* 省略表示用のクラス */
-.truncate-text {
-	/* 幅は指定しない（親のtd幅に従う） */
-	max-width: 550px;
-
-	display: block;
-	/* 幅制限を効かせるため */
-	white-space: nowrap;
-	/* 改行させない */
-	overflow: hidden;
-	/* はみ出し隠す */
-	text-overflow: ellipsis;
-	/* 「...」にする */
-	background-color: transparent;
-}
-
-
-/* スマホのときは幅を狭くする */
-/*@media screen and (max-width: 900px) {*/
-/*    .truncate-text {*/
-/*        max-width: 120px;*/
-/*    }*/
-/*}*/
