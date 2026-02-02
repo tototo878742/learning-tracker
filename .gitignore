@@ -1,0 +1,12 @@
+/target/
+/.mvn/
+/mvnw
+/mvnw.cmd
+.classpath
+.project
+.settings/
+.vscode/
+.idea/
+*.class
+*.log
+data/
