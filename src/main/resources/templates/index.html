@@ -67,27 +67,37 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="log : ${logs}">
-								<td th:text="${log.date}">2026-01-01</td>
-								<td>
-									<span class="badge bg-info text-dark" th:text="${log.category}">Java</span>
-								</td>
-								<td th:text="${log.content}">内容</td>
-								<td>
-									<div class="progress" style="height: 20px;">
-										<div class="progress-bar" role="progressbar"
-											th:style="'width: ' + ${log.progress} + '%'" th:text="${log.progress} + '%'"
-											th:classappend="${log.progress == 100} ? 'bg-success' : 'bg-primary'">
-										</div>
-									</div>
-								</td>
-								<td>
-									<a th:href="@{/edit/{id}(id=${log.id})}"
-										class="btn btn-sm btn-outline-primary">編集</a>
-									<a th:href="@{/delete/{id}(id=${log.id})}" class="btn btn-sm btn-outline-danger"
-										onclick="return confirm('本当に削除してよろしいですか？');">削除</a>
-								</td>
-							</tr>
+						    <tr th:each="log : ${logs}">
+						        <td th:text="${log.date}">2026-01-01</td>
+						        
+						        <td>
+						            <span class="badge bg-info text-dark" th:text="${log.category}">Java</span>
+						        </td>
+						        
+						        <td>
+						            <div class="truncate-text" th:text="${log.content}" th:title="${log.content}">
+						                長い文章...
+						            </div>
+						        </td>
+						        
+						        <td>
+						            <div class="d-flex align-items-center">
+						                <div class="progress flex-grow-1 me-2" style="height: 20px;">
+						                    <div class="progress-bar" role="progressbar"
+						                         th:style="'width: ' + ${log.progress} + '%'"
+						                         th:classappend="${log.progress == 100} ? 'bg-success' : 'bg-primary'">
+						                    </div>
+						                </div>
+						                <span class="fw-bold" th:text="${log.progress} + '%'">15%</span>
+						            </div>
+						        </td>
+						        
+						        <td>
+						            <a th:href="@{/edit/{id}(id=${log.id})}" class="btn btn-sm btn-outline-primary">編集</a>
+						            <a th:href="@{/delete/{id}(id=${log.id})}" class="btn btn-sm btn-outline-danger"
+						               onclick="return confirm('本当に削除してよろしいですか？');">削除</a>
+						        </td>
+						    </tr>
 						</tbody>
 					</table>
 				</div>

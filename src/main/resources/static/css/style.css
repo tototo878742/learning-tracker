@@ -23,9 +23,9 @@
 }
 
 /* =========================================
-   2. スマホ向けの強力な補正 (画面幅600px以下)
+   2. スマホ向けの強力な補正 (画面幅900px以下)
    ========================================= */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
 
     /* 【日報一覧】部分のレイアウト変更 */
     /* mobile-stackがついているdivの機能を書き換える */
@@ -64,5 +64,23 @@
     /* 入力時のズーム防止 */
     input[type="text"], input[type="password"], textarea {
         font-size: 16px !important;
+    }
+}
+
+/* 省略表示用のクラス */
+.truncate-text {
+    max-width: 200px;        /* PCでの最大幅 */
+    white-space: nowrap;     /* 改行させない */
+    overflow: hidden;        /* はみ出た部分を隠す */
+    text-overflow: ellipsis; /* 「...」にする */
+    
+    /* ↓ これが重要！背景色を透明にして、親のtdの色を透けさせる */
+    background-color: transparent; 
+}
+
+/* スマホのときは幅を狭くする */
+@media screen and (max-width: 900px) {
+    .truncate-text {
+        max-width: 120px;
     }
 }
