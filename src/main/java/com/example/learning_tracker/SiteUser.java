@@ -6,6 +6,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 //import lombok.Data; // もしLombokを使っていない場合はGetter/Setterを書いてください
+import java.util.List; // ← 追加
+import jakarta.persistence.CascadeType; // ← 追加
+import jakarta.persistence.OneToMany; // ← 追加
 
 @Entity
 public class SiteUser {
@@ -23,6 +26,11 @@ public class SiteUser {
     private String email;
 
     private String role; // "ADMIN" or "USER"
+
+ // ★★★ ここを追加！ ★★★
+    // userフィールド（LearningLog側にある変数名）と紐付け、カスケード削除を有効にする
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<LearningLog> learningLogs;
 
     // --- Getter / Setter (Lombokがない人用) ---
     public Long getId() { return id; }

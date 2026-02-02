@@ -5,21 +5,26 @@
    ========================================= */
 
 /* テーブル調整：文字を「絶対に改行させない」 */
-.table th, .table td {
-    white-space: nowrap !important;  /* これで縦書き（1文字改行）が直ります */
-    vertical-align: middle;
+.table th,
+.table td {
+	white-space: nowrap !important;
+	/* これで縦書き（1文字改行）が直ります */
+	vertical-align: middle;
 }
 
 /* テーブル全体に最低幅を持たせて、横スクロールを発動させる */
 .table {
-    min-width: 800px; /* 画面が狭くても表は縮まない */
+	min-width: 800px;
+	/* 画面が狭くても表は縮まない */
 }
 
 /* 進捗バーの文字色を強制的に黒にする */
 .progress-bar {
-    color: #000000 !important; /* 黒文字 */
-    font-weight: 900 !important; /* 太字 */
-    text-shadow: none !important;
+	color: #000000 !important;
+	/* 黒文字 */
+	font-weight: 900 !important;
+	/* 太字 */
+	text-shadow: none !important;
 }
 
 /* =========================================
@@ -27,60 +32,83 @@
    ========================================= */
 @media screen and (max-width: 900px) {
 
-    /* 【日報一覧】部分のレイアウト変更 */
-    /* mobile-stackがついているdivの機能を書き換える */
-    .mobile-stack {
-        display: flex !important;
-        flex-direction: column !important; /* 強制的に縦並びにする */
-        align-items: stretch !important;   /* 横幅いっぱいに伸ばす */
-        gap: 15px; /* 要素ごとの隙間 */
-    }
+	/* 【日報一覧】部分のレイアウト変更 */
+	/* mobile-stackがついているdivの機能を書き換える */
+	.mobile-stack {
+		display: flex !important;
+		flex-direction: column !important;
+		/* 強制的に縦並びにする */
+		align-items: stretch !important;
+		/* 横幅いっぱいに伸ばす */
+		gap: 15px;
+		/* 要素ごとの隙間 */
+	}
 
-    /* タイトル（h2）の調整 */
-    .mobile-stack h2 {
-        text-align: center; /* 中央寄せ */
-        margin-bottom: 5px;
-    }
+	/* タイトル（h2）の調整 */
+	.mobile-stack h2 {
+		text-align: center;
+		/* 中央寄せ */
+		margin-bottom: 5px;
+	}
 
-    /* 検索窓やボタンを囲んでいる div (.col-auto) を広げる */
-    .mobile-stack .col-auto {
-        width: 100% !important;
-    }
+	/* 検索窓やボタンを囲んでいる div (.col-auto) を広げる */
+	.mobile-stack .col-auto {
+		width: 100% !important;
+	}
 
-    /* 検索フォーム自体を広げる */
-    .mobile-stack form {
-        display: flex;
-        width: 100%;
-    }
+	/* 検索フォーム自体を広げる */
+	.mobile-stack form {
+		display: flex;
+		width: 100%;
+	}
 
-    /* 入力欄とボタンを広げる */
-    .mobile-stack input[type="text"],
-    .mobile-stack button,
-    .mobile-stack .btn {
-        width: 100% !important; /* 画面幅いっぱいに */
-        margin-bottom: 5px;     /* ボタン同士がくっつかないように */
-    }
+	/* 入力欄とボタンを広げる */
+	.mobile-stack input[type="text"],
+	.mobile-stack button,
+	.mobile-stack .btn {
+		width: 100% !important;
+		/* 画面幅いっぱいに */
+		margin-bottom: 5px;
+		/* ボタン同士がくっつかないように */
+	}
 
-    /* 入力時のズーム防止 */
-    input[type="text"], input[type="password"], textarea {
-        font-size: 16px !important;
-    }
+	/* 入力時のズーム防止 */
+	input[type="text"],
+	input[type="password"],
+	textarea {
+		font-size: 16px !important;
+	}
+
+	.truncate-text {
+		max-width: 150px;
+		/* スマホでは150pxを超えたら省略 */
+	}
+
 }
+
+/* 修正前：120pxなどで固定していた */
+/* 修正後：以下のように書き換えてください */
 
 /* 省略表示用のクラス */
 .truncate-text {
-    max-width: 200px;        /* PCでの最大幅 */
-    white-space: nowrap;     /* 改行させない */
-    overflow: hidden;        /* はみ出た部分を隠す */
-    text-overflow: ellipsis; /* 「...」にする */
-    
-    /* ↓ これが重要！背景色を透明にして、親のtdの色を透けさせる */
-    background-color: transparent; 
+	/* 幅は指定しない（親のtd幅に従う） */
+	max-width: 550px;
+
+	display: block;
+	/* 幅制限を効かせるため */
+	white-space: nowrap;
+	/* 改行させない */
+	overflow: hidden;
+	/* はみ出し隠す */
+	text-overflow: ellipsis;
+	/* 「...」にする */
+	background-color: transparent;
 }
 
+
 /* スマホのときは幅を狭くする */
-@media screen and (max-width: 900px) {
-    .truncate-text {
-        max-width: 120px;
-    }
-}
+/*@media screen and (max-width: 900px) {*/
+/*    .truncate-text {*/
+/*        max-width: 120px;*/
+/*    }*/
+/*}*/
