@@ -1,20 +1,68 @@
 @charset "UTF-8";
 
-/* スマホ向けの調整 */
-@media (max-width: 600px) {
-    /* 入力欄を画面幅いっぱいに */
-    input[type="text"], 
-    input[type="password"], 
-    input[type="date"], 
-    textarea {
-        width: 100%;
-        box-sizing: border-box; /* 枠線を含めてサイズ計算 */
-        font-size: 16px; /* 文字を読みやすく */
+/* =========================================
+   1. 基本設定（PC・スマホ共通）
+   ========================================= */
+
+/* テーブル調整：文字を「絶対に改行させない」 */
+.table th, .table td {
+    white-space: nowrap !important;  /* これで縦書き（1文字改行）が直ります */
+    vertical-align: middle;
+}
+
+/* テーブル全体に最低幅を持たせて、横スクロールを発動させる */
+.table {
+    min-width: 800px; /* 画面が狭くても表は縮まない */
+}
+
+/* 進捗バーの文字色を強制的に黒にする */
+.progress-bar {
+    color: #000000 !important; /* 黒文字 */
+    font-weight: 900 !important; /* 太字 */
+    text-shadow: none !important;
+}
+
+/* =========================================
+   2. スマホ向けの強力な補正 (画面幅600px以下)
+   ========================================= */
+@media screen and (max-width: 600px) {
+
+    /* 【日報一覧】部分のレイアウト変更 */
+    /* mobile-stackがついているdivの機能を書き換える */
+    .mobile-stack {
+        display: flex !important;
+        flex-direction: column !important; /* 強制的に縦並びにする */
+        align-items: stretch !important;   /* 横幅いっぱいに伸ばす */
+        gap: 15px; /* 要素ごとの隙間 */
     }
-    
-    /* ボタンも押しやすく大きく */
-    button {
+
+    /* タイトル（h2）の調整 */
+    .mobile-stack h2 {
+        text-align: center; /* 中央寄せ */
+        margin-bottom: 5px;
+    }
+
+    /* 検索窓やボタンを囲んでいる div (.col-auto) を広げる */
+    .mobile-stack .col-auto {
+        width: 100% !important;
+    }
+
+    /* 検索フォーム自体を広げる */
+    .mobile-stack form {
+        display: flex;
         width: 100%;
-        padding: 10px;
+    }
+
+    /* 入力欄とボタンを広げる */
+    .mobile-stack input[type="text"],
+    .mobile-stack button,
+    .mobile-stack .btn {
+        width: 100% !important; /* 画面幅いっぱいに */
+        margin-bottom: 5px;     /* ボタン同士がくっつかないように */
+    }
+
+    /* 入力時のズーム防止 */
+    input[type="text"], input[type="password"], textarea {
+        font-size: 16px !important;
     }
 }
