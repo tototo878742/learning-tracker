@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+/* スマホ向けの調整 */
+@media (max-width: 600px) {
+    /* 入力欄を画面幅いっぱいに */
+    input[type="text"], 
+    input[type="password"], 
+    input[type="date"], 
+    textarea {
+        width: 100%;
+        box-sizing: border-box; /* 枠線を含めてサイズ計算 */
+        font-size: 16px; /* 文字を読みやすく */
+    }
+    
+    /* ボタンも押しやすく大きく */
+    button {
+        width: 100%;
+        padding: 10px;
+    }
+}

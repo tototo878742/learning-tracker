@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>学習記録ポートフォリオ</title>
+	<title>日報アプリ</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 	<style>
@@ -16,27 +16,28 @@
 			font-weight: bold;
 		}
 	</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 
 	<nav class="navbar navbar-dark bg-dark mb-4">
-	        <div class="container">
-	            <a class="navbar-brand" href="/">📚 Learning Tracker</a>
-	            
-	            <div class="d-flex">
-	                <a href="/user/profile" class="btn btn-outline-light btn-sm me-2">設定</a>
-	                
-	                <form th:action="@{/logout}" method="post">
-	                    <button class="btn btn-outline-light btn-sm" type="submit">ログアウト</button>
-	                </form>
-	            </div>
-	        </div>
-	    </nav>
+		<div class="container">
+			<a class="navbar-brand" href="/">📚 Learning Tracker</a>
+
+			<div class="d-flex">
+				<a href="/user/profile" class="btn btn-outline-light btn-sm me-2">設定</a>
+
+				<form th:action="@{/logout}" method="post">
+					<button class="btn btn-outline-light btn-sm" type="submit">ログアウト</button>
+				</form>
+			</div>
+		</div>
+	</nav>
 
 	<div class="container">
 		<div class="d-flex justify-content-between align-items-center mb-3">
-			<h2>学習記録一覧</h2>
+			<h2>日報一覧</h2>
 			<div class="col-auto">
 				<form action="/" method="get" class="d-flex">
 					<input type="text" name="keyword" class="form-control me-2" placeholder="検索..."
@@ -53,39 +54,42 @@
 
 		<div class="card shadow-sm">
 			<div class="card-body">
-				<table class="table table-hover table-striped align-middle">
-					<thead class="table-dark">
-						<tr>
-							<th>日付</th>
-							<th>カテゴリ</th>
-							<th>内容</th>
-							<th style="width: 10%;">進捗</th>
-							<th style="width: 15%;">操作</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="log : ${logs}">
-							<td th:text="${log.date}">2026-01-01</td>
-							<td>
-								<span class="badge bg-info text-dark" th:text="${log.category}">Java</span>
-							</td>
-							<td th:text="${log.content}">内容</td>
-							<td>
-								<div class="progress" style="height: 20px;">
-									<div class="progress-bar" role="progressbar"
-										th:style="'width: ' + ${log.progress} + '%'" th:text="${log.progress} + '%'"
-										th:classappend="${log.progress == 100} ? 'bg-success' : 'bg-primary'">
+				<div style="overflow-x: auto;">
+					<table class="table table-hover table-striped align-middle">
+						<thead class="table-dark">
+							<tr>
+								<th>日付</th>
+								<th>カテゴリ</th>
+								<th>内容</th>
+								<th style="width: 10%;">進捗</th>
+								<th style="width: 15%;">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="log : ${logs}">
+								<td th:text="${log.date}">2026-01-01</td>
+								<td>
+									<span class="badge bg-info text-dark" th:text="${log.category}">Java</span>
+								</td>
+								<td th:text="${log.content}">内容</td>
+								<td>
+									<div class="progress" style="height: 20px;">
+										<div class="progress-bar" role="progressbar"
+											th:style="'width: ' + ${log.progress} + '%'" th:text="${log.progress} + '%'"
+											th:classappend="${log.progress == 100} ? 'bg-success' : 'bg-primary'">
+										</div>
 									</div>
-								</div>
-							</td>
-							<td>
-								<a th:href="@{/edit/{id}(id=${log.id})}" class="btn btn-sm btn-outline-primary">編集</a>
-								<a th:href="@{/delete/{id}(id=${log.id})}" class="btn btn-sm btn-outline-danger"
-									onclick="return confirm('本当に削除してよろしいですか？');">削除</a>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+								</td>
+								<td>
+									<a th:href="@{/edit/{id}(id=${log.id})}"
+										class="btn btn-sm btn-outline-primary">編集</a>
+									<a th:href="@{/delete/{id}(id=${log.id})}" class="btn btn-sm btn-outline-danger"
+										onclick="return confirm('本当に削除してよろしいですか？');">削除</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
