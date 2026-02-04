@@ -58,7 +58,7 @@ graph LR
     classDef error fill:#c62828,stroke:#b71c1c,stroke-width:2px,color:#ffffff;
 
     %% 認可エリアの枠線スタイル
-    classDef subgraphStyle fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000000;
+    classDef subgraphStyle fill:#363c47,stroke:#1565c0,stroke-width:2px,color:#000000;
 
 
     %% --- ノード定義 ---
