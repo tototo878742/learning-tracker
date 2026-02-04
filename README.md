@@ -4,6 +4,8 @@ Spring Boot を使用して構築された、Webベースの日報管理アプ�
 従来のServlet/JSP（レガシー構成）との比較学習用に、モダンなアーキテクチャを採用して実装されています。
 レガシー版はこちら(※今後公開予定)
 
+Demo URL:https://learning-tracker-tototo878742.onrender.com/
+
 
 ## 概要
 ユーザーが日々の業務内容を記録・管理するためのシステムです。
