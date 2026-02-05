@@ -26,7 +26,7 @@ Spring Securityによる認証機能、Spring Data JPAによる効率的なDB操
 ## 技術スタック
 
 * **言語:** Java 17
-* **フレームワーク:** Spring Boot 4.0.3
+* **フレームワーク:** Spring Boot 4.0.2
 * **テンプレートエンジン:** Thymeleaf
 * **データベース:** postgreSQL Neon(本番想定) / H2 (開発用)
 * **O/Rマッパー:** Spring Data JPA
