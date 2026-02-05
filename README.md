@@ -31,6 +31,7 @@ Spring Securityによる認証機能、Spring Data JPAによる効率的なDB操
 * **データベース:** postgreSQL Neon(本番想定) / H2 (開発用)
 * **O/Rマッパー:** Spring Data JPA
 * **CSS:** Bootstrap 5
+* **Infrastructure:** Render(PaaS for Application deployment)
 
 ## アーキテクチャ構成
 
